@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "imgtool"
+version = "0.1.0"
+description = "Privacy-first local image processing utility"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "typer>=0.12.0",
+  "pillow>=10.0.0",
+]
+
+[project.optional-dependencies]
+gui = ["dearpygui>=1.11.1"]
+ocr = ["textract>=1.6.5"]
+all = ["dearpygui>=1.11.1", "textract>=1.6.5"]
+
+[project.scripts]
+imgtool = "imgtool.cli.main:run"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["imgtool*"]
