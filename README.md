@@ -16,6 +16,18 @@ poetry install --extras "ocr"
 poetry install --all-extras
 ```
 
+Install with `pipx` from a local checkout:
+
+```bash
+pipx install "/absolute/path/to/imgtool[gui]"
+pipx runpip imgtool install 'pip<24.1'
+pipx runpip imgtool install 'textract==1.6.5'
+```
+
+Notes:
+- `pipx install <path>` only installs base dependencies unless extras are included in the path spec.
+- `textract` currently requires the `pip<24.1` workaround because of upstream dependency metadata.
+
 ## Commands
 
 ```bash
