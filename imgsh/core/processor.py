@@ -6,13 +6,13 @@ from pathlib import Path
 
 from PIL import Image
 
-from imgtool.config import DEFAULT_OCR_ENGINE, DEFAULT_OCR_FORMAT, DEFAULT_QUALITY
-from imgtool.core.errors import ImgToolError
-from imgtool.core.format_engine import resolve_output_format
-from imgtool.core.metadata import auto_orient, get_exif_bytes, save_image
-from imgtool.core.ocr_engine import extract_text_with_textract
-from imgtool.core.resize_engine import resize_image
-from imgtool.utils.file_utils import ensure_not_exists_unless_overwrite, resolve_single_output_path
+from imgsh.config import DEFAULT_OCR_ENGINE, DEFAULT_OCR_FORMAT, DEFAULT_QUALITY
+from imgsh.core.errors import ImgshError
+from imgsh.core.format_engine import resolve_output_format
+from imgsh.core.metadata import auto_orient, get_exif_bytes, save_image
+from imgsh.core.ocr_engine import extract_text_with_textract
+from imgsh.core.resize_engine import resize_image
+from imgsh.utils.file_utils import ensure_not_exists_unless_overwrite, resolve_single_output_path
 
 
 @dataclass
@@ -45,7 +45,7 @@ class ImageProcessor:
             input_path=input_path,
             out=out,
             extension=extension,
-            default_suffix="_imgtool",
+            default_suffix="_imgsh",
         )
         ensure_not_exists_unless_overwrite(output_path, overwrite=overwrite)
 
@@ -135,9 +135,9 @@ class ImageProcessor:
         overwrite: bool = False,
     ) -> Path:
         if engine != "textract":
-            raise ImgToolError(f"Unsupported OCR engine '{engine}'. Only 'textract' is supported.")
+            raise ImgshError(f"Unsupported OCR engine '{engine}'. Only 'textract' is supported.")
         if output_format not in {"txt", "json"}:
-            raise ImgToolError(f"Unsupported OCR output format '{output_format}'. Use txt or json.")
+            raise ImgshError(f"Unsupported OCR output format '{output_format}'. Use txt or json.")
 
         text = extract_text_with_textract(input_path=input_path, lang=lang)
 

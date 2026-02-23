@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from PIL import Image, ImageOps
 
-from imgtool.core.errors import ImgToolError
+from imgsh.core.errors import ImgshError
 
 LANCZOS = Image.Resampling.LANCZOS
 
@@ -15,13 +15,13 @@ def resize_image(
     fit: str,
 ) -> Image.Image:
     if width is None and height is None:
-        raise ImgToolError("At least one of --width or --height is required for resize.")
+        raise ImgshError("At least one of --width or --height is required for resize.")
 
     original_width, original_height = image.size
 
     if fit == "cover":
         if width is None or height is None:
-            raise ImgToolError("Fit mode 'cover' requires both --width and --height.")
+            raise ImgshError("Fit mode 'cover' requires both --width and --height.")
         return ImageOps.fit(image, (width, height), method=LANCZOS)
 
     if fit == "exact":

@@ -2,24 +2,24 @@ from __future__ import annotations
 
 import typer
 
-from imgtool.cli import exit_with_error
-from imgtool.core.errors import ImgToolError
+from imgsh.cli import exit_with_error
+from imgsh.core.errors import ImgshError
 
 
 def register(app: typer.Typer) -> None:
     @app.command("gui")
     def gui_command() -> None:
         try:
-            from imgtool.gui.app import launch_gui
+            from imgsh.gui.app import launch_gui
         except ImportError:
             exit_with_error(
-                ImgToolError(
+                ImgshError(
                     "GUI dependencies are not installed. Install with: poetry install --extras \"gui\" "
-                    "(or pip install \"imgtool[gui]\")."
+                    "(or pip install \"imgsh[gui]\")."
                 )
             )
 
         try:
             launch_gui()
-        except ImgToolError as error:
+        except ImgshError as error:
             exit_with_error(error)

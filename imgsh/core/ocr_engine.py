@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from imgtool.core.errors import ImgToolError
+from imgsh.core.errors import ImgshError
 
 LANG_CODE_MAP = {
     "en": "eng",
@@ -13,8 +13,8 @@ def _load_textract():
     try:
         import textract  # type: ignore
     except ImportError as exc:
-        raise ImgToolError(
-            "OCR engine 'textract' is not installed. Install with: pip install \"imgtool[ocr]\""
+        raise ImgshError(
+            "OCR engine 'textract' is not installed. Install with: pip install \"imgsh[ocr]\""
         ) from exc
     return textract
 
@@ -29,7 +29,7 @@ def extract_text_with_textract(input_path: Path, lang: str) -> str:
         # Not all textract parsers accept language.
         data = textract.process(str(input_path))
     except Exception as exc:
-        raise ImgToolError(f"OCR failed for '{input_path}': {exc}") from exc
+        raise ImgshError(f"OCR failed for '{input_path}': {exc}") from exc
 
     if isinstance(data, bytes):
         return data.decode("utf-8", errors="replace")

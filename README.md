@@ -1,23 +1,23 @@
-# ImgTool
+# Imgsh
 
 Privacy-first local image utility for resize, convert, batch processing, and optional OCR.
 
 ## Install (Published Package)
 
 ```bash
-pipx install "imgtool[gui,ocr]"
+pipx install "imgsh[gui,ocr]"
 ```
 
 Or with `pip`:
 
 ```bash
-pip install "imgtool[gui,ocr]"
+pip install "imgsh[gui,ocr]"
 ```
 
 ## Install (Local Checkout with pipx)
 
 ```bash
-pipx install "$HOME/Desktop/projects/imgtool[gui,ocr]"
+pipx install "$HOME/Desktop/projects/imgsh[gui,ocr]"
 ```
 
 `pipx install <path>` installs only base dependencies unless extras are included in the path spec.
@@ -31,18 +31,18 @@ poetry install --all-extras
 ## Commands
 
 ```bash
-imgtool resize input.jpg --width 1200 --fit contain
-imgtool batch-resize ./images --width 1200 --recursive --out ./processed
-imgtool convert input.png --format webp
-imgtool extract-text input.jpg --engine textract --ocr-format txt
-imgtool gui
+imgsh resize input.jpg --width 1200 --fit contain
+imgsh batch-resize ./images --width 1200 --recursive --out ./processed
+imgsh convert input.png --format webp
+imgsh extract-text input.jpg --engine textract --ocr-format txt
+imgsh gui
 ```
 
 ## Help
 
 ```bash
-imgtool -h
-imgtool resize -h
+imgsh -h
+imgsh resize -h
 ```
 
 ## Build Distribution Artifacts

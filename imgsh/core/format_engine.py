@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from imgtool.config import DEFAULT_EXTENSION_FOR_FORMAT, SUPPORTED_FORMATS
-from imgtool.core.errors import ImgToolError
+from imgsh.config import DEFAULT_EXTENSION_FOR_FORMAT, SUPPORTED_FORMATS
+from imgsh.core.errors import ImgshError
 
 
 def supported_format_list() -> str:
@@ -27,7 +27,7 @@ def resolve_output_format(
         key = input_path.suffix.lower().lstrip(".")
 
     if key not in SUPPORTED_FORMATS:
-        raise ImgToolError(
+        raise ImgshError(
             f"Unsupported format '{key}'. Supported formats: {supported_format_list()}"
         )
 

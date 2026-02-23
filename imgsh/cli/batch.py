@@ -5,13 +5,13 @@ from typing import Annotated
 
 import typer
 
-from imgtool.cli import exit_with_error
-from imgtool.config import DEFAULT_FIT, DEFAULT_OCR_ENGINE, DEFAULT_OCR_FORMAT, DEFAULT_QUALITY
-from imgtool.core.errors import ImgToolError
-from imgtool.core.format_engine import resolve_output_format
-from imgtool.core.processor import ImageProcessor
-from imgtool.utils.file_utils import ensure_input_dir, iter_image_files
-from imgtool.utils.validation import validate_ocr_options, validate_quality, validate_resize_dimensions
+from imgsh.cli import exit_with_error
+from imgsh.config import DEFAULT_FIT, DEFAULT_OCR_ENGINE, DEFAULT_OCR_FORMAT, DEFAULT_QUALITY
+from imgsh.core.errors import ImgshError
+from imgsh.core.format_engine import resolve_output_format
+from imgsh.core.processor import ImageProcessor
+from imgsh.utils.file_utils import ensure_input_dir, iter_image_files
+from imgsh.utils.validation import validate_ocr_options, validate_quality, validate_resize_dimensions
 
 
 def _render_name_pattern(
@@ -31,7 +31,7 @@ def _render_name_pattern(
             index=index,
         )
     except KeyError as exc:
-        raise ImgToolError(
+        raise ImgshError(
             f"Invalid placeholder in --name-pattern: {exc}. "
             "Supported placeholders: {stem}, {ext}, {width}, {height}, {index}"
         ) from exc
@@ -63,7 +63,7 @@ def register(app: typer.Typer) -> None:
                 "--name-pattern",
                 help="Filename pattern (without extension). Supports {stem},{ext},{width},{height},{index}.",
             ),
-        ] = "{stem}_imgtool",
+        ] = "{stem}_imgsh",
         quality: Annotated[
             int, typer.Option("--quality", help="JPEG/WebP quality (1-100).")
         ] = DEFAULT_QUALITY,
@@ -100,7 +100,7 @@ def register(app: typer.Typer) -> None:
 
             input_files = list(iter_image_files(input_dir=input_dir, recursive=recursive))
             if not input_files:
-                raise ImgToolError("No supported images found in the input directory.")
+                raise ImgshError("No supported images found in the input directory.")
 
             processor = ImageProcessor()
             processed = 0
@@ -147,12 +147,12 @@ def register(app: typer.Typer) -> None:
                     )
                     processed += 1
                     typer.echo(f"[ok] {input_path} -> {result.output_path}")
-                except ImgToolError as error:
+                except ImgshError as error:
                     failed += 1
                     typer.secho(f"[fail] {input_path}: {error}", fg=typer.colors.YELLOW, err=True)
 
             typer.echo(f"Batch complete. Processed: {processed}, Failed: {failed}")
             if failed:
                 raise typer.Exit(code=1)
-        except ImgToolError as error:
+        except ImgshError as error:
             exit_with_error(error)

@@ -3,27 +3,27 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Iterable
 
-from imgtool.config import SUPPORTED_EXTENSIONS
-from imgtool.core.errors import ImgToolError
+from imgsh.config import SUPPORTED_EXTENSIONS
+from imgsh.core.errors import ImgshError
 
 
 def ensure_input_file(path: Path) -> None:
     if not path.exists():
-        raise ImgToolError(f"File not found: {path}")
+        raise ImgshError(f"File not found: {path}")
     if not path.is_file():
-        raise ImgToolError(f"Expected a file, got: {path}")
+        raise ImgshError(f"Expected a file, got: {path}")
 
 
 def ensure_input_dir(path: Path) -> None:
     if not path.exists():
-        raise ImgToolError(f"Directory not found: {path}")
+        raise ImgshError(f"Directory not found: {path}")
     if not path.is_dir():
-        raise ImgToolError(f"Expected a directory, got: {path}")
+        raise ImgshError(f"Expected a directory, got: {path}")
 
 
 def ensure_not_exists_unless_overwrite(path: Path, overwrite: bool) -> None:
     if path.exists() and not overwrite:
-        raise ImgToolError(
+        raise ImgshError(
             f"Output already exists: {path}. Use --overwrite to replace existing files."
         )
 

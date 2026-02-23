@@ -5,12 +5,12 @@ from typing import Annotated
 
 import typer
 
-from imgtool.cli import exit_with_error
-from imgtool.config import DEFAULT_OCR_ENGINE, DEFAULT_OCR_FORMAT
-from imgtool.core.errors import ImgToolError
-from imgtool.core.processor import ImageProcessor
-from imgtool.utils.file_utils import ensure_input_file
-from imgtool.utils.validation import validate_ocr_options
+from imgsh.cli import exit_with_error
+from imgsh.config import DEFAULT_OCR_ENGINE, DEFAULT_OCR_FORMAT
+from imgsh.core.errors import ImgshError
+from imgsh.core.processor import ImageProcessor
+from imgsh.utils.file_utils import ensure_input_file
+from imgsh.utils.validation import validate_ocr_options
 
 
 def register(app: typer.Typer) -> None:
@@ -45,5 +45,5 @@ def register(app: typer.Typer) -> None:
                 overwrite=overwrite,
             )
             typer.echo(f"Saved OCR: {output_path}")
-        except ImgToolError as error:
+        except ImgshError as error:
             exit_with_error(error)

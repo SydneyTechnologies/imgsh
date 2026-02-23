@@ -4,9 +4,9 @@ from pathlib import Path
 
 from PIL import Image
 
-from imgtool.core.errors import ImgToolError
-from imgtool.core.processor import ImageProcessor
-from imgtool.utils.validation import validate_quality, validate_resize_dimensions
+from imgsh.core.errors import ImgshError
+from imgsh.core.processor import ImageProcessor
+from imgsh.utils.validation import validate_quality, validate_resize_dimensions
 
 
 class ResizeView:
@@ -17,22 +17,22 @@ class ResizeView:
         self.processor = ImageProcessor()
         self.input_path: Path | None = None
 
-        self.texture_registry_tag = "imgtool_texture_registry"
-        self.preview_texture_tag = "imgtool_preview_texture"
-        self.preview_image_tag = "imgtool_preview_image"
-        self.path_text_tag = "imgtool_path_text"
-        self.status_tag = "imgtool_status"
+        self.texture_registry_tag = "imgsh_texture_registry"
+        self.preview_texture_tag = "imgsh_preview_texture"
+        self.preview_image_tag = "imgsh_preview_image"
+        self.path_text_tag = "imgsh_path_text"
+        self.status_tag = "imgsh_status"
 
-        self.width_tag = "imgtool_width"
-        self.height_tag = "imgtool_height"
-        self.fit_tag = "imgtool_fit"
-        self.keep_aspect_tag = "imgtool_keep_aspect"
-        self.format_tag = "imgtool_format"
-        self.quality_tag = "imgtool_quality"
-        self.output_tag = "imgtool_output"
-        self.overwrite_tag = "imgtool_overwrite"
-        self.exif_tag = "imgtool_exif"
-        self.file_dialog_tag = "imgtool_file_dialog"
+        self.width_tag = "imgsh_width"
+        self.height_tag = "imgsh_height"
+        self.fit_tag = "imgsh_fit"
+        self.keep_aspect_tag = "imgsh_keep_aspect"
+        self.format_tag = "imgsh_format"
+        self.quality_tag = "imgsh_quality"
+        self.output_tag = "imgsh_output"
+        self.overwrite_tag = "imgsh_overwrite"
+        self.exif_tag = "imgsh_exif"
+        self.file_dialog_tag = "imgsh_file_dialog"
 
     def build(self) -> None:
         dpg = self.dpg
@@ -56,7 +56,7 @@ class ResizeView:
             dpg.add_file_extension("Images{.jpg,.jpeg,.png,.webp}", color=(150, 255, 150, 255))
             dpg.add_file_extension(".*")
 
-        with dpg.window(label="ImgTool", width=980, height=700):
+        with dpg.window(label="Imgsh", width=980, height=700):
             with dpg.group(horizontal=True):
                 dpg.add_button(label="Open Image", callback=lambda: dpg.show_item(self.file_dialog_tag))
                 dpg.add_text("No file selected", tag=self.path_text_tag)
@@ -186,7 +186,7 @@ class ResizeView:
                 ocr=False,
             )
             self._set_status(f"Exported: {result.output_path}")
-        except ImgToolError as exc:
+        except ImgshError as exc:
             self._set_status(f"Error: {exc}")
 
     def _set_status(self, message: str) -> None:

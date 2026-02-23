@@ -1,5 +1,5 @@
 [project]
-name = "imgtool"
+name = "imgsh"
 version = "0.1.0"
 description = "Privacy-first local image processing utility"
 readme = "README.md"
@@ -29,15 +29,15 @@ ocr = ["textract==1.6.3"]
 all = ["dearpygui>=1.11.1", "textract==1.6.3"]
 
 [project.scripts]
-imgtool = "imgtool.cli.main:run"
+imgsh = "imgsh.cli.main:run"
 
 [project.urls]
-Homepage = "https://github.com/SydneyTechnologies/imgtool"
-Repository = "https://github.com/SydneyTechnologies/imgtool"
-Issues = "https://github.com/SydneyTechnologies/imgtool/issues"
+Homepage = "https://github.com/SydneyTechnologies/imgsh"
+Repository = "https://github.com/SydneyTechnologies/imgsh"
+Issues = "https://github.com/SydneyTechnologies/imgsh/issues"
 
 [tool.poetry]
-packages = [{ include = "imgtool" }]
+packages = [{ include = "imgsh" }]
 
 [build-system]
 requires = ["poetry-core>=1.9.0"]

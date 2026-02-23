@@ -1,4 +1,4 @@
-from imgtool.cli.main import run
+from imgsh.cli.main import run
 
 
 if __name__ == "__main__":
