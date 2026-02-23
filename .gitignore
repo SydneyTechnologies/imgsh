@@ -1,0 +1,3 @@
+# Packaging/build metadata
+imgtool.egg-info/
+*.egg-info/

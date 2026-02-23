@@ -1,7 +1,3 @@
-[build-system]
-requires = ["setuptools>=69", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "imgtool"
 version = "0.1.0"
@@ -21,6 +17,9 @@ all = ["dearpygui>=1.11.1", "textract>=1.6.5"]
 [project.scripts]
 imgtool = "imgtool.cli.main:run"
 
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["imgtool*"]
+[tool.poetry]
+packages = [{ include = "imgtool" }]
+
+[build-system]
+requires = ["poetry-core>=1.9.0"]
+build-backend = "poetry.core.masonry.api"

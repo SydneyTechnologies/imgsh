@@ -5,30 +5,30 @@ Privacy-first local image utility for resize, convert, batch processing, and opt
 ## Install
 
 ```bash
-pip install -e .
+poetry install
 ```
 
 Optional extras:
 
 ```bash
-pip install -e ".[gui]"
-pip install -e ".[ocr]"
-pip install -e ".[all]"
+poetry install --extras "gui"
+poetry install --extras "ocr"
+poetry install --all-extras
 ```
 
 ## Commands
 
 ```bash
-imgtool resize input.jpg --width 1200 --fit contain
-imgtool batch-resize ./images --width 1200 --recursive --out ./processed
-imgtool convert input.png --format webp
-imgtool extract-text input.jpg --engine textract --ocr-format txt
-imgtool gui
+poetry run imgtool resize input.jpg --width 1200 --fit contain
+poetry run imgtool batch-resize ./images --width 1200 --recursive --out ./processed
+poetry run imgtool convert input.png --format webp
+poetry run imgtool extract-text input.jpg --engine textract --ocr-format txt
+poetry run imgtool gui
 ```
 
 Run help:
 
 ```bash
-imgtool --help
-imgtool resize --help
+poetry run imgtool --help
+poetry run imgtool resize --help
 ```
