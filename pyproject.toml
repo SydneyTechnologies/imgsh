@@ -4,6 +4,20 @@ version = "0.1.0"
 description = "Privacy-first local image processing utility"
 readme = "README.md"
 requires-python = ">=3.11"
+authors = [{ name = "Sydney Idundun", email = "sydney.idundun@gmail.com" }]
+keywords = ["image", "cli", "resize", "convert", "ocr"]
+classifiers = [
+  "Environment :: Console",
+  "Intended Audience :: End Users/Desktop",
+  "Operating System :: OS Independent",
+  "Topic :: Multimedia :: Graphics :: Graphics Conversion",
+  "Topic :: Utilities",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+]
 dependencies = [
   "typer>=0.12.0",
   "pillow>=10.0.0",
@@ -16,6 +30,11 @@ all = ["dearpygui>=1.11.1", "textract==1.6.3"]
 
 [project.scripts]
 imgtool = "imgtool.cli.main:run"
+
+[project.urls]
+Homepage = "https://github.com/SydneyTechnologies/imgtool"
+Repository = "https://github.com/SydneyTechnologies/imgtool"
+Issues = "https://github.com/SydneyTechnologies/imgtool/issues"
 
 [tool.poetry]
 packages = [{ include = "imgtool" }]
