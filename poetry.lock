@@ -14,15 +14,15 @@ files = [
 
 [[package]]
 name = "argcomplete"
-version = "1.10.3"
+version = "1.10.0"
 description = "Bash tab completion for argparse"
 optional = true
 python-versions = "*"
 groups = ["main"]
 markers = "extra == \"ocr\" or extra == \"all\""
 files = [
-    {file = "argcomplete-1.10.3-py2.py3-none-any.whl", hash = "sha256:d8ea63ebaec7f59e56e7b2a386b1d1c7f1a7ae87902c9ee17d377eaa557f06fa"},
-    {file = "argcomplete-1.10.3.tar.gz", hash = "sha256:a37f522cf3b6a34abddfedb61c4546f60023b3799b22d1cd971eacdc0861530a"},
+    {file = "argcomplete-1.10.0-py2.py3-none-any.whl", hash = "sha256:2f2052ea5156eb5cc7edce9c0ddc937e30c49c1097d51b24f34350a08632a264"},
+    {file = "argcomplete-1.10.0.tar.gz", hash = "sha256:45836de8cc63d2f6e06b898cef1e4ce1e9907d246ec77ac8e64f23f153d6bec1"},
 ]
 
 [package.extras]
@@ -30,16 +30,16 @@ test = ["coverage", "flake8", "pexpect", "wheel"]
 
 [[package]]
 name = "beautifulsoup4"
-version = "4.8.2"
+version = "4.8.0"
 description = "Screen-scraping library"
 optional = true
 python-versions = "*"
 groups = ["main"]
 markers = "extra == \"ocr\" or extra == \"all\""
 files = [
-    {file = "beautifulsoup4-4.8.2-py2-none-any.whl", hash = "sha256:e1505eeed31b0f4ce2dbb3bc8eb256c04cc2b3b72af7d551a4ab6efd5cbe5dae"},
-    {file = "beautifulsoup4-4.8.2-py3-none-any.whl", hash = "sha256:9fbb4d6e48ecd30bcacc5b63b94088192dcda178513b2ae3c394229f8911b887"},
-    {file = "beautifulsoup4-4.8.2.tar.gz", hash = "sha256:05fd825eb01c290877657a56df4c6e4c311b3965bda790c613a3d6fb01a5462a"},
+    {file = "beautifulsoup4-4.8.0-py2-none-any.whl", hash = "sha256:05668158c7b85b791c5abde53e50265e16f98ad601c402ba44d70f96c4159612"},
+    {file = "beautifulsoup4-4.8.0-py3-none-any.whl", hash = "sha256:f040590be10520f2ea4c2ae8c3dae441c7cfff5308ec9d58a0ec0c1b8f81d469"},
+    {file = "beautifulsoup4-4.8.0.tar.gz", hash = "sha256:25288c9e176f354bf277c0a10aa96c782a6a18a17122dba2e8cec4a97e03343b"},
 ]
 
 [package.dependencies]
@@ -91,19 +91,6 @@ files = [
 ]
 
 [[package]]
-name = "compressed-rtf"
-version = "1.0.7"
-description = "Compressed Rich Text Format (RTF) compression and decompression package"
-optional = true
-python-versions = "*"
-groups = ["main"]
-markers = "extra == \"ocr\" or extra == \"all\""
-files = [
-    {file = "compressed_rtf-1.0.7-py3-none-any.whl", hash = "sha256:b7904921d78c67a0a4b7fff9fb361a00ae2b447b6edca010ce321cd98fa0fcc0"},
-    {file = "compressed_rtf-1.0.7.tar.gz", hash = "sha256:7c30859334839f3cdc7d10796af5b434bb326b9df7cb5a65e95a8eacb2951b0e"},
-]
-
-[[package]]
 name = "dearpygui"
 version = "2.2"
 description = "DearPyGui: A simple Python GUI Toolkit"
@@ -135,48 +122,49 @@ files = [
 
 [[package]]
 name = "docx2txt"
-version = "0.9"
+version = "0.8"
 description = "A pure python-based utility to extract text and images from docx files."
 optional = true
 python-versions = "*"
 groups = ["main"]
 markers = "extra == \"ocr\" or extra == \"all\""
 files = [
-    {file = "docx2txt-0.9-py3-none-any.whl", hash = "sha256:e3718c0653fd6f2fcf4b51b02a61452ad1c38a4c163bcf0a6fd9486cd38f529a"},
-    {file = "docx2txt-0.9.tar.gz", hash = "sha256:18013f6229b14909028b19aa7bf4f8f3d6e4632d7b089ab29f7f0a4d1f660e28"},
+    {file = "docx2txt-0.8.tar.gz", hash = "sha256:2c06d98d7cfe2d3947e5760a57d924e3ff07745b379c8737723922e7009236e5"},
 ]
 
 [[package]]
-name = "ebcdic"
-version = "1.1.1"
-description = "Additional EBCDIC codecs"
+name = "ebooklib"
+version = "0.17.1"
+description = "Ebook library which can handle EPUB2/EPUB3 and Kindle format"
 optional = true
 python-versions = "*"
 groups = ["main"]
 markers = "extra == \"ocr\" or extra == \"all\""
 files = [
-    {file = "ebcdic-1.1.1-py2.py3-none-any.whl", hash = "sha256:33b4cb729bc2d0bf46cc1847b0e5946897cb8d3f53520c5b9aa5fa98d7e735f1"},
+    {file = "EbookLib-0.17.1.tar.gz", hash = "sha256:fe23e22c28050196c68db3e7b13b257bf39426d927cb395c6f2cc13ac11327f1"},
 ]
+
+[package.dependencies]
+lxml = "*"
+six = "*"
 
 [[package]]
 name = "extract-msg"
-version = "0.29.0"
+version = "0.23.1"
 description = "Extracts emails and attachments saved in Microsoft Outlook's .msg files"
 optional = true
 python-versions = "*"
 groups = ["main"]
 markers = "extra == \"ocr\" or extra == \"all\""
 files = [
-    {file = "extract_msg-0.29.0-py2.py3-none-any.whl", hash = "sha256:a8885dc385d0c88c4b87fb2a573727c0115cd2ef5157956cf183878f940eef28"},
-    {file = "extract_msg-0.29.0.tar.gz", hash = "sha256:ae6ce5f78fddb582350cb49bbf2776eadecdbf3c74b7a305dced42bd187a5401"},
+    {file = "extract_msg-0.23.1-py2.py3-none-any.whl", hash = "sha256:0e733743d4b5b7ca62265d1477d4b99f03e44f3202fa53ee97d54f5b2c75b1b3"},
+    {file = "extract_msg-0.23.1.tar.gz", hash = "sha256:3746d5f68266740575ef9097516f39c5f601fa031e188cea338a13b66de16ada"},
 ]
 
 [package.dependencies]
-compressed-rtf = ">=1.0.6"
-ebcdic = ">=1.1.1"
 imapclient = "2.1.0"
-olefile = ">=0.46"
-tzlocal = ">=2.1"
+olefile = "0.46"
+tzlocal = "1.5.1"
 
 [[package]]
 name = "imapclient"
@@ -393,42 +381,34 @@ files = [
 
 [[package]]
 name = "olefile"
-version = "0.47"
+version = "0.46"
 description = "Python package to parse, read and write Microsoft OLE2 files (Structured Storage or Compound Document, Microsoft Office)"
 optional = true
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 groups = ["main"]
 markers = "extra == \"ocr\" or extra == \"all\""
 files = [
-    {file = "olefile-0.47-py2.py3-none-any.whl", hash = "sha256:543c7da2a7adadf21214938bb79c83ea12b473a4b6ee4ad4bf854e7715e13d1f"},
-    {file = "olefile-0.47.zip", hash = "sha256:599383381a0bf3dfbd932ca0ca6515acd174ed48870cbf7fee123d698c192c1c"},
+    {file = "olefile-0.46.zip", hash = "sha256:133b031eaf8fd2c9399b78b8bc5b8fcbe4c31e85295749bb17a87cba8f3c3964"},
 ]
-
-[package.extras]
-tests = ["pytest", "pytest-cov"]
 
 [[package]]
 name = "pdfminer-six"
-version = "20191110"
+version = "20181108"
 description = "PDF parser and analyzer"
 optional = true
 python-versions = "*"
 groups = ["main"]
 markers = "extra == \"ocr\" or extra == \"all\""
 files = [
-    {file = "pdfminer.six-20191110-py2.py3-none-any.whl", hash = "sha256:ca2ca58f3ac66a486bce53a6ddba95dc2b27781612915fa41c444790ba9cd2a8"},
-    {file = "pdfminer.six-20191110.tar.gz", hash = "sha256:141a53ec491bee6d45bf9b2c7f82601426fb5d32636bcf6b9c8a8f3b6431fea6"},
+    {file = "pdfminer.six-20181108-py2-none-any.whl", hash = "sha256:d12653375fcc00615d76dbd48fc551a2d5ffd6f572c11660d417ccf91a600f9b"},
+    {file = "pdfminer.six-20181108-py2.py3-none-any.whl", hash = "sha256:f04d029d1d3e58c87da51bdefef2e9a1dbf2d7b63f727dd2a3e36054f5ae96ea"},
+    {file = "pdfminer.six-20181108.tar.gz", hash = "sha256:9cc58857cf0a360213008061d903282462abee55cdcc7e0b6e08d6834e55050d"},
 ]
 
 [package.dependencies]
-chardet = {version = "*", markers = "python_version > \"3.0\""}
 pycryptodome = "*"
 six = "*"
 sortedcontainers = "*"
-
-[package.extras]
-dev = ["nose", "tox"]
-docs = ["sphinx", "sphinx-argparse"]
 
 [[package]]
 name = "pillow"
@@ -608,21 +588,33 @@ windows-terminal = ["colorama (>=0.4.6)"]
 
 [[package]]
 name = "python-pptx"
-version = "0.6.23"
+version = "0.6.18"
 description = "Generate and manipulate Open XML PowerPoint (.pptx) files"
 optional = true
 python-versions = "*"
 groups = ["main"]
 markers = "extra == \"ocr\" or extra == \"all\""
 files = [
-    {file = "python-pptx-0.6.23.tar.gz", hash = "sha256:587497ff28e779ab18dbb074f6d4052893c85dedc95ed75df319364f331fedee"},
-    {file = "python_pptx-0.6.23-py3-none-any.whl", hash = "sha256:dd0527194627a2b7cc05f3ba23ecaa2d9a0d5ac9b6193a28ed1b7a716f4217d4"},
+    {file = "python-pptx-0.6.18.tar.gz", hash = "sha256:a857d69e52d7e8a8fb32fca8182fdd4a3c68c689de8d4e4460e9b4a95efa7bc4"},
 ]
 
 [package.dependencies]
 lxml = ">=3.1.0"
 Pillow = ">=3.3.2"
 XlsxWriter = ">=0.5.7"
+
+[[package]]
+name = "pytz"
+version = "2025.2"
+description = "World timezone definitions, modern and historical"
+optional = true
+python-versions = "*"
+groups = ["main"]
+markers = "extra == \"ocr\" or extra == \"all\""
+files = [
+    {file = "pytz-2025.2-py2.py3-none-any.whl", hash = "sha256:5ddf76296dd8c44c26eb8f4b6f35488f3ccbf6fbbd7adee0b7262d43f0ec2f00"},
+    {file = "pytz-2025.2.tar.gz", hash = "sha256:360b9e3dbb49a209c21ad61809c7fb453643e048b38924c765813546746e81c3"},
+]
 
 [[package]]
 name = "rich"
@@ -708,28 +700,29 @@ files = [
 
 [[package]]
 name = "textract"
-version = "1.6.5"
+version = "1.6.3"
 description = "extract text from any document. no muss. no fuss."
 optional = true
 python-versions = "*"
 groups = ["main"]
 markers = "extra == \"ocr\" or extra == \"all\""
 files = [
-    {file = "textract-1.6.5-py3-none-any.whl", hash = "sha256:0accd78ec42864e3e3827f9ef798ced9aac4727b664303b724a198fed73fa438"},
-    {file = "textract-1.6.5.tar.gz", hash = "sha256:68f0f09056885821e6c43d8538987518daa94057c306679f2857cc5ee66ad850"},
+    {file = "textract-1.6.3-py3-none-any.whl", hash = "sha256:ff2f4c61d720d3291e2deb870d3b24d0c63397cb4c094966e96c1bdb2f89df38"},
+    {file = "textract-1.6.3.tar.gz", hash = "sha256:6213b2f923b85af8e5e380241db9361e3f5dbd444a74108745fd4121ae151310"},
 ]
 
 [package.dependencies]
-argcomplete = ">=1.10.0,<1.11.0"
-beautifulsoup4 = ">=4.8.0,<4.9.0"
-chardet = "==3.*"
-docx2txt = ">=0.8,<1.0"
-extract-msg = "<=0.29"
-"pdfminer.six" = "20191110"
-python-pptx = ">=0.6.18,<0.7.0"
-six = ">=1.12.0,<1.13.0"
-SpeechRecognition = ">=3.8.1,<3.9.0"
-xlrd = ">=1.2.0,<1.3.0"
+argcomplete = "1.10.0"
+beautifulsoup4 = "4.8.0"
+chardet = "3.0.4"
+docx2txt = "0.8"
+EbookLib = "0.17.1"
+extract-msg = "0.23.1"
+"pdfminer.six" = "20181108"
+python-pptx = "0.6.18"
+six = "1.12.0"
+SpeechRecognition = "3.8.1"
+xlrd = "1.2.0"
 
 [package.extras]
 pocketsphinx = ["pocketsphinx (==0.1.15)"]
@@ -753,36 +746,19 @@ rich = ">=12.3.0"
 shellingham = ">=1.3.0"
 
 [[package]]
-name = "tzdata"
-version = "2025.3"
-description = "Provider of IANA time zone data"
-optional = true
-python-versions = ">=2"
-groups = ["main"]
-markers = "(extra == \"ocr\" or extra == \"all\") and platform_system == \"Windows\""
-files = [
-    {file = "tzdata-2025.3-py2.py3-none-any.whl", hash = "sha256:06a47e5700f3081aab02b2e513160914ff0694bce9947d6b76ebd6bf57cfc5d1"},
-    {file = "tzdata-2025.3.tar.gz", hash = "sha256:de39c2ca5dc7b0344f2eba86f49d614019d29f060fc4ebc8a417896a620b56a7"},
-]
-
-[[package]]
 name = "tzlocal"
-version = "5.3.1"
+version = "1.5.1"
 description = "tzinfo object for the local timezone"
 optional = true
-python-versions = ">=3.9"
+python-versions = "*"
 groups = ["main"]
 markers = "extra == \"ocr\" or extra == \"all\""
 files = [
-    {file = "tzlocal-5.3.1-py3-none-any.whl", hash = "sha256:eb1a66c3ef5847adf7a834f1be0800581b683b5608e74f86ecbcef8ab91bb85d"},
-    {file = "tzlocal-5.3.1.tar.gz", hash = "sha256:cceffc7edecefea1f595541dbd6e990cb1ea3d19bf01b2809f362a03dd7921fd"},
+    {file = "tzlocal-1.5.1.tar.gz", hash = "sha256:4ebeb848845ac898da6519b9b31879cf13b6626f7184c496037b818e238f2c4e"},
 ]
 
 [package.dependencies]
-tzdata = {version = "*", markers = "platform_system == \"Windows\""}
-
-[package.extras]
-devenv = ["check-manifest", "pytest (>=4.3)", "pytest-cov", "pytest-mock (>=3.3)", "zest.releaser"]
+pytz = "*"
 
 [[package]]
 name = "xlrd"
@@ -818,4 +794,4 @@ ocr = ["textract"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11"
-content-hash = "941d67bb95a2e3f5f3be67b0ce69adb9c9ef8fb09a0842b69ff7862cf7db61d3"
+content-hash = "80f6591c2418155c4db80b368d42086198c60a9da1ce6cba6a951ab9c9d4234e"

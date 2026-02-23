@@ -11,8 +11,8 @@ dependencies = [
 
 [project.optional-dependencies]
 gui = ["dearpygui>=1.11.1"]
-ocr = ["textract>=1.6.5"]
-all = ["dearpygui>=1.11.1", "textract>=1.6.5"]
+ocr = ["textract==1.6.3"]
+all = ["dearpygui>=1.11.1", "textract==1.6.3"]
 
 [project.scripts]
 imgtool = "imgtool.cli.main:run"
