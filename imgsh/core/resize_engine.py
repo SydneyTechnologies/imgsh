@@ -14,10 +14,12 @@ def resize_image(
     keep_aspect: bool,
     fit: str,
 ) -> Image.Image:
-    if width is None and height is None:
-        raise ImgshError("At least one of --width or --height is required for resize.")
-
     original_width, original_height = image.size
+    if width is None and height is None:
+        if fit == "cover":
+            raise ImgshError("Fit mode 'cover' requires both --width and --height.")
+        # Allow quality-only exports by keeping source dimensions unchanged.
+        return image.copy()
 
     if fit == "cover":
         if width is None or height is None:

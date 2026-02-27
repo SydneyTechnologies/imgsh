@@ -25,7 +25,9 @@ def validate_resize_dimensions(width: int | None, height: int | None, fit: str) 
     validate_fit_mode(fit)
 
     if width is None and height is None:
-        raise ImgshError("At least one of --width or --height is required.")
+        if fit == "cover":
+            raise ImgshError("Fit mode 'cover' requires both --width and --height.")
+        return
     if fit in {"cover", "exact"} and (width is None or height is None):
         raise ImgshError(f"Fit mode '{fit}' requires both --width and --height.")
 
