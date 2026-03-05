@@ -32,6 +32,7 @@ poetry install --all-extras
 
 ```bash
 imgsh resize input.jpg --width 1200 --fit contain
+imgsh crop input.jpg --x 120 --y 80 --width 640 --height 400
 imgsh batch-resize ./images --width 1200 --recursive --out ./processed
 imgsh convert input.png --format webp
 imgsh extract-text input.jpg --engine textract --ocr-format txt
@@ -43,7 +44,15 @@ imgsh gui
 ```bash
 imgsh -h
 imgsh resize -h
+imgsh crop -h
 ```
+
+## GUI Crop
+
+- Open an image in `imgsh gui`.
+- Enable **Crop**, then drag on the preview to create a selection.
+- Fine-tune the crop using **Left X / Top Y / Width / Height** (in original image pixels).
+- Click **Export** to apply crop (and optional resize settings).
 
 ## Build Distribution Artifacts
 

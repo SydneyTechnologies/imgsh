@@ -7,6 +7,7 @@ from pathlib import Path
 from PIL import Image
 
 from imgsh.config import DEFAULT_OCR_ENGINE, DEFAULT_OCR_FORMAT, DEFAULT_QUALITY
+from imgsh.core.crop_engine import crop_image
 from imgsh.core.errors import ImgshError
 from imgsh.core.format_engine import resolve_output_format
 from imgsh.core.metadata import auto_orient, get_exif_bytes, save_image
@@ -30,6 +31,7 @@ class ImageProcessor:
         height: int | None,
         keep_aspect: bool,
         fit: str,
+        crop_box: tuple[int, int, int, int] | None = None,
         quality: int = DEFAULT_QUALITY,
         output_format: str | None = None,
         preserve_exif: bool = True,
@@ -51,8 +53,18 @@ class ImageProcessor:
 
         with Image.open(input_path) as source_image:
             oriented = auto_orient(source_image)
+            working_image = oriented
+            if crop_box:
+                crop_x, crop_y, crop_width, crop_height = crop_box
+                working_image = crop_image(
+                    image=working_image,
+                    x=crop_x,
+                    y=crop_y,
+                    width=crop_width,
+                    height=crop_height,
+                )
             resized = resize_image(
-                image=oriented,
+                image=working_image,
                 width=width,
                 height=height,
                 keep_aspect=keep_aspect,
@@ -61,6 +73,63 @@ class ImageProcessor:
             exif_bytes = get_exif_bytes(source_image) if preserve_exif else None
             save_image(
                 image=resized,
+                output_path=output_path,
+                pillow_format=pillow_format,
+                quality=quality,
+                exif_bytes=exif_bytes,
+            )
+
+        ocr_path: Path | None = None
+        if ocr:
+            ocr_path = self.extract_text(
+                input_path=output_path,
+                out=ocr_out,
+                engine=ocr_engine,
+                output_format=ocr_format,
+                lang=lang,
+                overwrite=overwrite,
+            )
+        return ProcessResult(output_path=output_path, ocr_path=ocr_path)
+
+    def crop(
+        self,
+        input_path: Path,
+        out: Path | None,
+        x: int,
+        y: int,
+        width: int,
+        height: int,
+        quality: int = DEFAULT_QUALITY,
+        output_format: str | None = None,
+        preserve_exif: bool = True,
+        overwrite: bool = False,
+        ocr: bool = False,
+        ocr_engine: str = DEFAULT_OCR_ENGINE,
+        ocr_out: Path | None = None,
+        ocr_format: str = DEFAULT_OCR_FORMAT,
+        lang: str = "en",
+    ) -> ProcessResult:
+        pillow_format, extension = resolve_output_format(output_format, out, input_path)
+        output_path = resolve_single_output_path(
+            input_path=input_path,
+            out=out,
+            extension=extension,
+            default_suffix="_crop",
+        )
+        ensure_not_exists_unless_overwrite(output_path, overwrite=overwrite)
+
+        with Image.open(input_path) as source_image:
+            oriented = auto_orient(source_image)
+            cropped = crop_image(
+                image=oriented,
+                x=x,
+                y=y,
+                width=width,
+                height=height,
+            )
+            exif_bytes = get_exif_bytes(source_image) if preserve_exif else None
+            save_image(
+                image=cropped,
                 output_path=output_path,
                 pillow_format=pillow_format,
                 quality=quality,

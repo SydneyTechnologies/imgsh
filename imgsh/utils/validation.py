@@ -9,6 +9,11 @@ def validate_positive(name: str, value: int | None) -> None:
         raise ImgshError(f"{name} must be greater than 0. Got: {value}")
 
 
+def validate_non_negative(name: str, value: int | None) -> None:
+    if value is not None and value < 0:
+        raise ImgshError(f"{name} must be 0 or greater. Got: {value}")
+
+
 def validate_quality(quality: int) -> None:
     if quality < 1 or quality > 100:
         raise ImgshError(f"--quality must be between 1 and 100. Got: {quality}")
@@ -37,3 +42,26 @@ def validate_ocr_options(engine: str, output_format: str) -> None:
         raise ImgshError(f"Unsupported OCR engine '{engine}'. Supported values: textract")
     if output_format not in OCR_FORMATS:
         raise ImgshError(f"Unsupported --ocr-format '{output_format}'. Supported values: txt, json")
+
+
+def validate_crop_box(x: int, y: int, width: int, height: int) -> None:
+    validate_non_negative("--x", x)
+    validate_non_negative("--y", y)
+    validate_positive("--width", width)
+    validate_positive("--height", height)
+
+
+def validate_crop_bounds(
+    x: int,
+    y: int,
+    width: int,
+    height: int,
+    image_width: int,
+    image_height: int,
+) -> None:
+    if x + width > image_width or y + height > image_height:
+        raise ImgshError(
+            "Crop box is out of bounds. "
+            f"Box (x={x}, y={y}, width={width}, height={height}) exceeds "
+            f"image size ({image_width}x{image_height})."
+        )
